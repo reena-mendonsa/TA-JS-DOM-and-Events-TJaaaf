@@ -4,7 +4,7 @@ for(let i=0;i<500;i++){
     let div = document.createElement('div');
     div.classList.add(`box`);
     div.classList.add(`box${i}`);
-    
+    div.innerText = i +   Math.floor(Math.random()*100) ;
     container.append(div);
 }
 
