@@ -1,24 +1,32 @@
-let li = document.querySelectorAll('.box');
-let i=1;
+let firstboxes = document.querySelectorAll('.first li');
+let secondBox = document.querySelector('.second');
 
 function addNum(elem){
     i=i+1;
   elem.innerText = i;
 }
 
-li.forEach((elem) => elem.addEventListener('click',function(){
-        // i=i+1;
-        // elem.innerText =i;
-        addNum(elem);
-    })
- );
 
 
- function handleEvent(event){
-     i=i+1;
-     event.target.innerText = i;
-     console.log(event.target.innerText);
- }
 
- let root = document.querySelector('.wrapper');
- li.forEach((element)=> element.addEventListener('click',handleEvent));
+
+ firstboxes.forEach((elem,index) =>{
+     elem.addEventListener('click',(event)=>{
+
+        event.target.innerText = index+1;
+     setTimeout(()=>{ 
+        event.target.innerText="";
+     },5000);
+     });
+ });
+
+
+ 
+ secondBox.addEventListener('click',(elem)=>{
+     let text = elem.target.dataset.text;
+     elem.target.innerText = text;
+
+     setTimeout(() => {
+         elem.target.innerText ="";
+     },5000);
+ });
