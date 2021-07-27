@@ -9,6 +9,28 @@ html {
   box-sizing: inherit;
 }
 
+.container{
+  max-width:1200px;
+  width:100%;
+  margin:0 auto;
+ 
+  border:1px border red;
+
+}
+
+.flex{
+  display: flex;
+}
+
+.justify-content{
+  
+  justify-content: space-between;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
+
 body,
 h1,
 h2,
@@ -32,4 +54,11 @@ ul {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.box{
+  width:4rem;
+  height: 4rem;
+  /* margin:5px; */
+  border:1px solid black;
 }
