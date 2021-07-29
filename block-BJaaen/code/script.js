@@ -1,4 +1,5 @@
 let initialValue =0;
+let game = document.querySelector('.gameContainer');
 let Pscore = document.querySelector('#playerScore');
 let Cscore = document.querySelector('#computerScore');
 Pscore.innerText = initialValue;
@@ -11,30 +12,58 @@ let playGame = () =>{
     let paper = document.querySelector('#playerPaper');
     let scissors = document.querySelector('#playerScissors');
     let playerOptions = [ rock,paper,scissors];
+    let compRock = document.querySelector('#computerRock');
+    let compPaper = document.querySelector('#computerPaper');
+    let compScissors = document.querySelector('#computerScissors');
     let computerOptions = ['Rock','Paper','Scissors'];
     console.log(Math.floor(Math.random()*3));
 
-
+   
+    function resetSelected(){
+        let reset = document.querySelectorAll('.selected');
+        reset.forEach(item => {
+                    item.classList.remove('selected');
+        });
+    }
     playerOptions.forEach(option =>{
        option.addEventListener('click',function(){
+        resetSelected();
         let playerChoice = document.querySelector('#playerChoice');
         let compChoice = document.querySelector('#computerChoice');
         const choiceNumber = Math.floor(Math.random()*3);
         const computerChoice = computerOptions[choiceNumber];
         compChoice.innerText = '---'+computerChoice;
         playerChoice.innerText = '---'+this.title;
-        // console.log('this',this.title);
+        
+
+        this.classList.add('selected');
         // console.dir(this);
+        // console.dir(compRock);
+        
+        if(computerChoice === 'Rock'){
+        
+            compRock.classList.add('selected');
+        }
+        else if(computerChoice === 'Paper'){
+        
+            compPaper.classList.add('selected');
+        }
+        else{
+        
+            compScissors.classList.add('selected');
+        }
+        
         winner(this.title,computerChoice);
+        
+
        });
-  
+       
     });
 }
 const winner = (player,computer) => {
     console.log('inisde winner');
     const result = document.querySelector('#resultText');
-    // const playerScoreBoard = document.querySelector('.p-count');
-    // const computerScoreBoard = document.querySelector('.c-count');
+    
     player = player.toLowerCase();
     computer = computer.toLowerCase();
     if(player === computer){
@@ -75,6 +104,7 @@ const winner = (player,computer) => {
             Pscore.innerText = 1;
         }
     }
+    
 }
 let reload= document.querySelector('#resetAll');
 reload.addEventListener('click',() => {
