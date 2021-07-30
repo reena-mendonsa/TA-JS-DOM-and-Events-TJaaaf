@@ -21,8 +21,8 @@ h6,
 p,
 ol,
 ul {
-  margin: 5px;
-  padding: 0;
+  margin: 10px;
+  padding: 5px;
   font-weight: normal;
 }
 
@@ -76,11 +76,12 @@ select {
   gap: 1rem;
 }
 .modelContainer{
-  max-width: 400px;
+  max-width: 500px;
   margin:0 auto;
   background-color: #ffff;
-  padding:10px;
-  
+  padding:20px;
+  display: none;
+  position: relative;
 }
 p {
   padding-top: 1rem;
@@ -96,4 +97,29 @@ input[type='text'] {
 }
 .terms {
   display: inline-block;
+}
+
+.open{
+
+  display: inline-block;
+  position: fixed;
+  left:0;
+  right:0;
+  bottom: 0;
+  top:0;
+  margin:30px auto;
+  height:550px;
+  z-index:1;
+  background-color: white;
+
+}
+
+.close{
+  background-color: rgb(146, 3, 3);
+  color:black;
+  font-size: 18px;
+  box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+ position: absolute;
+ top:0;
+ right:0;
 }
