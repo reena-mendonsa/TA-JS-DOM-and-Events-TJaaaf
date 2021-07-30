@@ -1,13 +1,20 @@
 let userInfo ={};
 
 let form = document.querySelector('form');
+let model = document.querySelector('.modelContainer');
+let model_layout = document.querySelector('.model_layout'); 
+let modelInfo = document.querySelector('.modelInfo');
+
 
 function addElement(data){
+    modelInfo.innerHTML="";
+    
+    model.classList.add('open');
+    
 
-    let model = document.createElement('div');
-    model.classList.add('modelContainer');
+    /**************Create Elements********** */
     let name = document.createElement('h1');
-    name.innerText =`Hello ${data.name}`;
+    name.innerText =`Hello ${data.name} !`;
     let email = document.createElement('h2');
     email.innerText =`Email:${data.email}`;
     let love = document.createElement('h2');
@@ -18,15 +25,21 @@ function addElement(data){
     range.innerText =`Rating:${data.range}`;
     let book = document.createElement('h2');
     book.innerText =`Book Genre:${data.books}`;
+    let terms = document.createElement('h2');
+    if(data.terms == true){
+        terms.innerText = "You have Accepted All Terms !";
+     }
+     else{
+         terms.innerText = "You have not Accepted the Terms!!";
+     }
 
-    model.append(name,email,love,color,range,book);
+     
+    modelInfo.append(name,email,love,color,range,book,terms);
     
-    document.body.innerHTML.
-    document.getElementById('mainCont').append(model);
-
-    
-
-
+    let close = document.querySelector('.close');
+    close.addEventListener("click",()=>{
+        model.classList.remove('open');
+    });
 }
 
 function handleSubmit(event){
@@ -39,9 +52,10 @@ function handleSubmit(event){
     userInfo.range = form.elements.range.value;
     userInfo.books = form.elements.drone.value;
     userInfo.terms = form.elements.terms.checked;
-    console.log(userInfo);
-
+    
+    
     addElement(userInfo);
+    
 }
 
 
