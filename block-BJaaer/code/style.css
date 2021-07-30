@@ -21,7 +21,7 @@ h6,
 p,
 ol,
 ul {
-  margin: 0;
+  margin: 5px;
   padding: 0;
   font-weight: normal;
 }
@@ -75,7 +75,13 @@ select {
   flex-direction: column;
   gap: 1rem;
 }
-
+.modelContainer{
+  max-width: 400px;
+  margin:0 auto;
+  background-color: #ffff;
+  padding:10px;
+  
+}
 p {
   padding-top: 1rem;
 }
