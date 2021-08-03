@@ -7,7 +7,73 @@
     <title>Form Validation 👇</title>
   </head>
   <body>
-   
-    <script src="./script.js"></script>
+     <div>
+       <form class="container">
+        <div class="form-control">
+          <label for="name">Your Name:</label>
+        <input
+          id="name"
+          type="text"
+          name="firstName"
+          placeholder="Enter your name"
+          required minlength="4"
+        />
+        <small></small>
+        </div> 
+        <div class="form-control">
+          <label for="email">Your Email:</label>
+        <input
+          id="email"
+          type="email"
+          name="emailId"
+          placeholder="Enter your email"
+          required minlength="6"
+        />
+        <small></small>
+        </div>
+        
+        <div class="form-control">
+          <label for="ph">Phone Number:</label>
+        <input
+          id="ph"
+          type="number"
+          name="phNum"
+          placeholder="Enter your phone number"
+          required 
+        />
+        <small></small>
+        </div>
+        
+        <div class="form-control">
+          <label for="passwd">Password:</label>
+        <input
+          id="passwd"
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        />
+        <small></small>
+        </div>
+        
+        <div class="form-control">
+          <label for="confPasswd">Confirm Password:</label>
+        <input
+          id="confPasswd"
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm password"
+          required
+        />
+        <small></small>
+        </div>
+        
+        <button type="submit">Submit</button>
+
+
+
+       </form>
+     </div>
+    <script src="script.js"></script>
   </body>
 </html>
