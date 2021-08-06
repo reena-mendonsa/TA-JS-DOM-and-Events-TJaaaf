@@ -103,15 +103,20 @@ function main(){
     function clearCompleted(event){
         
          root.innerHTML="";
-        let cleardata =alltodo.filter((todo,index)=>{
-            if(todo.isDone === true){
-                 alltodo.splice(index,1);
-                 count=count-1;
-            }
-        }); 
+        alltodo =alltodo.filter((todo,index)=>{
+            
+              if(todo.isDone ===false){
+               
+                  return todo;
+                  
+              }
 
+        }); 
+        count = alltodo.length;
+        localStorage.setItem('todo',JSON.stringify(alltodo));
+        localStorage.setItem('count',count);   
       console.log('Clear Completed',alltodo);
-      createList(cleardata,root);
+      createList(alltodo,root);
     }
 
     
