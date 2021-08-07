@@ -3,6 +3,18 @@ function main(){
 let cont=document.querySelector('.container');
 let nameCont = document.querySelector('.names');
 let searchPeople = document.querySelector('input');
+let allPeople=[];
+
+
+
+for(let i=0;i<got.houses.length ; i++){
+  for(let j=0;j<got.houses[i].people.length;j++){
+    allPeople.push(got.houses[i].people[j]
+      );
+  }
+  
+
+}
 
 /****************Search People of GOT***********/
 
@@ -11,55 +23,44 @@ function handleSearch(event){
   let filterNames=[];
   
   let searchString= event.target.value.toLowerCase();
-  //  got.houses.forEach((data) =>{
-    got.houses.filter((e)=>{     
-        
-      //  if( e.name.toLowerCase().includes(searchString)){
-        e.people.forEach((p) =>{
+  
+  allPeople.filter((p) =>{
           if(p.name.toLowerCase().indexOf(searchString)>-1) {
             
-             filterNames.push(e);
-          }
-
-        });
-        
-       
+             filterNames.push(p);
+          }     
     });
         
-  // });
-  console.log(filterNames);
+  
   createBoxes(filterNames);
 }
 
 /*************Sort by Name Buttons***************** */
 function handleNames(event){
     
-    let selectedNames = got.houses.filter((e) => {
-        
-        if(e.name === event.target.innerText){
-        
-            return got;
-        }
-    });
-    
-    createBoxes(selectedNames);
-}
+    console.log(event.target.innerText);
+    let selectedNames = got.houses.filter((e) => e.name === event.target.innerText);
+      
+        let newArr=[]; 
+        selectedNames.forEach((ppl)=> createBoxes(ppl.people));
+            
+      
+    }
 
 
 /**************CREATE UI********************* */
 
 function createBoxes(data){
     cont.innerHTML="";
-    data.forEach((entry,indx)=>{
-   
-      
-
-        entry.people.forEach((ppl,index) =>{
+    console.log('createBoxes',data);
+ 
+        data.forEach((ppl,index)=>{
           let div= document.createElement('div');
         /*****image and name */
         let div1 = document.createElement('div');
         let img = document.createElement('img');
         let h2 =document.createElement('h2');
+        
         img.src = ppl.image;
         h2.innerText=ppl.name;
         div1.append(img,h2);
@@ -87,11 +88,6 @@ function createBoxes(data){
         cont.append(div);
   });
   
-        
-      
-  
-  });
-  
 }
 function createUI(data=got){
 
@@ -107,12 +103,12 @@ function createUI(data=got){
     nameDiv.addEventListener('click',handleNames);
 });
 
-    createBoxes(got.houses);
+    createBoxes(allPeople);
 }
    
   createUI(got);
 
-  searchPeople.addEventListener('keyup',handleSearch);
+  searchPeople.addEventListener('input',handleSearch);
 
 }
 
