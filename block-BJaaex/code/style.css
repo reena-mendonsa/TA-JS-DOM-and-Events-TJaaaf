@@ -1,0 +1,130 @@
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #ffffff;
+	font-family: 'Poppins';
+	font-size: 16px;
+}
+
+.container {
+    max-width:750px;
+    width:100%;
+    margin:0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.deck {
+	width: 85%;
+	background: #716F71;
+	padding: 1rem;
+	border-radius: 4px;
+	box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 0 3em;
+}
+
+.card {
+    position: relative;
+    transition: all 0.4s linear;
+    transform-style: preserve-3d;
+    margin: 5px;
+  }
+
+
+.deck .card {
+	height: 150px;
+	width: 150px;
+	margin: 0.2rem 0.2rem;
+	background: #141214;;
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    backface-visibility: hidden;
+}
+
+.back,
+.front {
+  height: 150px;
+  width: 150px;
+}
+
+.back,
+.front {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.back {
+    transform: rotateY(180deg);
+    background-color: #02b3e4;
+    color:#ffff;
+    font-size: 50px;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+    
+  
+  }
+  
+.card.selected{
+    
+    border:2px solid red;
+    font-size: 50px;
+    transform: rotateY(180deg);
+	background-color: #02b3e4;
+	cursor: default;
+    color:#ffff;
+	/* animation-name: flipInY; */
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	/* animation-duration: .75s; */
+}
+
+
+.card.match {
+    border:1px solid rgb(219, 223, 4);
+	cursor: default;
+	background-color: #E5F720;
+	font-size: 50px;
+    color:#ffff;
+	/* animation-name: rubberBand; */
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+    
+	/* animation-duration: .75s; */
+    transform: rotateY(180deg);
+}
+
+
+
+
+
+.disabled {
+    
+	pointer-events: none;
+	/* opacity: 0.9; */
+}
