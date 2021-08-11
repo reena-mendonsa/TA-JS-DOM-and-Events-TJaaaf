@@ -3,6 +3,7 @@ let count =0;
 let firstGuess = '';
 let secondGuess = '';
 let previousTarget =null;
+let timerFlag = false;
 
 let delay=1200;
 
@@ -48,12 +49,14 @@ function resetTimer(){
     hour = 0;
 
     timer.innerHTML = "0 mins 0 secs";
-
+    timerFlag = false;
 }
 
 
 function startTimer(){
+    
     interval = setInterval(function(){
+        console.log('timer started');
         timer.innerHTML = minute+"mins "+second+"secs";
         second++;
         if(second == 60){
@@ -82,9 +85,10 @@ function reset() {
 
 /*********** selected card ***********/
 function handleSelectedCard(event) {
-    
-    
-    
+    if (timerFlag === false ){  
+    timerFlag= true;
+    startTimer();
+    }
     /*if (this === previousTarget ||this.classList.contains('selected'))  {
         console.log('return');
         return;
@@ -108,7 +112,7 @@ function handleSelectedCard(event) {
               // and the first guess matches the second match...
               moves++;
               movesCounter.innerHTML=moves;
-              startTimer();
+              
               if (firstGuess === secondGuess) {
                 // run the match function
                 setTimeout(match,delay) ;
